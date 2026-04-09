@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Coffee Shop Cafe | Southern Homestyle & Warmth</title>
+  <!-- Google Fonts & simple animation library (AOS) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fefaf5;
+      color: #2c241a;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3, .logo, .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+    }
+
+    /* color palette: beige, cream, brown, soft orange */
+    :root {
+      --cream: #FFF9EF;
+      --beige: #F5E6D3;
+      --warm-brown: #8B5A2B;
+      --soft-orange: #E67E22;
+      --deep-brown: #5A3A22;
+      --card-bg: #FFFFFF;
+      --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+      --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.08);
+    }
+
+    /* container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* navigation (simple, no menu page) */
+    nav {
+      background: rgba(255, 249, 239, 0.96);
+      backdrop-filter: blur(2px);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #f0e0ce;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .logo h2 {
+      font-size: 1.8rem;
+      color: var(--deep-brown);
+      letter-spacing: -0.3px;
+    }
+    .logo p {
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      color: #b97f44;
+      font-weight: 500;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #4a2e1e;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+    .nav-links a:hover {
+      color: var(--soft-orange);
+    }
+
+    /* buttons & CTA */
+    .btn-cta {
+      display: inline-block;
+      background-color: var(--soft-orange);
+      color: white;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 40px;
+      text-decoration: none;
+      transition: 0.25s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      border: none;
+      font-size: 1rem;
+    }
+    .btn-cta:hover {
+      background-color: #c45f1a;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 18px -8px rgba(230,126,34,0.3);
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(0deg, rgba(245,230,211,0.7), rgba(255,249,239,0.8)), url('https://placehold.co/1400x700/f5e6d3/8B5A2B?text=Coffee+Shop+Cafe+Interior') center/cover no-repeat;
+      background-image: url('https://images.pexels.com/photos/3020919/pexels-photo-3020919.jpeg?auto=compress&cs=tinysrgb&w=1600');
+      background-size: cover;
+      background-position: 50% 35%;
+      padding: 100px 0 110px;
+      text-align: center;
+    }
+    .hero-title {
+      font-size: 3.8rem;
+      font-weight: 600;
+      color: #3e2a1f;
+      text-shadow: 2px 2px 12px rgba(255,245,225,0.8);
+    }
+    .hero-sub {
+      font-size: 1.3rem;
+      margin: 1rem 0 1.8rem;
+      color: #4f311b;
+      font-weight: 500;
+    }
+    /* sections */
+    section {
+      padding: 70px 0;
+    }
+    .section-title {
+      font-size: 2.4rem;
+      text-align: center;
+      margin-bottom: 48px;
+      color: #3d2a1c;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 3px;
+      background: var(--soft-orange);
+      margin: 14px auto 0;
+      border-radius: 4px;
+    }
+
+    /* feature cards */
+    .features-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin: 40px 0;
+    }
+    .feature-card {
+      background: var(--card-bg);
+      padding: 28px 24px;
+      border-radius: 32px;
+      box-shadow: var(--shadow-sm);
+      flex: 1 1 220px;
+      text-align: center;
+      transition: 0.2s;
+      border: 1px solid #f2e2d0;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+    .feature-icon {
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+    }
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      color: #7b4a2a;
+    }
+
+    /* popular dishes showcase (grid) */
+    .dishes-showcase {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .dish-item {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      width: 240px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s;
+      text-align: center;
+    }
+    .dish-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+    .dish-item h4 {
+      font-size: 1.3rem;
+      margin: 16px 0 8px;
+      color: #5a3a22;
+    }
+    .dish-item p {
+      font-size: 0.85rem;
+      padding: 0 12px 20px;
+      color: #7a6233;
+      font-weight: 500;
+    }
+
+    /* gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+    }
+    .gallery-img {
+      border-radius: 24px;
+      overflow: hidden;
+      height: 220px;
+      box-shadow: var(--shadow-sm);
+    }
+    .gallery-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.3s;
+    }
+    .gallery-img img:hover {
+      transform: scale(1.02);
+    }
+
+    /* reviews section */
+    .reviews-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin: 40px 0;
+    }
+    .review-card {
+      background: white;
+      padding: 28px 22px;
+      border-radius: 32px;
+      width: 300px;
+      box-shadow: var(--shadow-sm);
+      border-left: 6px solid var(--soft-orange);
+    }
+    .stars {
+      color: #f4b942;
+      font-size: 1.3rem;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+    .review-text {
+      font-style: italic;
+      line-height: 1.4;
+      margin: 12px 0;
+      color: #3a2a1e;
+    }
+    .review-author {
+      font-weight: 700;
+      margin-top: 10px;
+      color: #b46f38;
+    }
+    .rating-summary {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .rating-badge {
+      display: inline-flex;
+      background: #f0e0ce;
+      padding: 10px 28px;
+      border-radius: 60px;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    /* about page styles (inline same design) */
+    .about-story {
+      background: #fffaf2;
+      border-radius: 48px;
+      padding: 40px 32px;
+      margin: 30px 0;
+      box-shadow: var(--shadow-sm);
+    }
+    .why-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .why-item {
+      background: #ffffffcc;
+      backdrop-filter: blur(4px);
+      background: white;
+      padding: 20px 24px;
+      border-radius: 28px;
+      flex: 1;
+      text-align: center;
+      font-weight: 600;
+      color: #543a24;
+    }
+    /* contact page */
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: space-between;
+      margin: 30px 0;
+    }
+    .contact-details {
+      flex: 1.2;
+      background: white;
+      border-radius: 36px;
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+    }
+    .map-container {
+      flex: 1.8;
+      border-radius: 36px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      min-height: 380px;
+    }
+    .info-row {
+      margin: 20px 0;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      font-size: 1.1rem;
+    }
+    .info-icon {
+      font-size: 1.5rem;
+    }
+    .hours-badge, .price-badge {
+      background: #f8ede2;
+      display: inline-block;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+    footer {
+      background: #2c241a;
+      color: #e9dccc;
+      text-align: center;
+      padding: 28px 20px;
+      margin-top: 40px;
+      font-size: 0.85rem;
+    }
+    @media (max-width: 780px) {
+      .hero-title { font-size: 2.4rem; }
+      .nav-container { flex-direction: column; align-items: center; gap: 12px; }
+      .nav-links { gap: 1.5rem; }
+      .section-title { font-size: 2rem; }
+      .contact-grid { flex-direction: column; }
+      .map-container { min-height: 320px; }
+    }
+    img {
+      max-width: 100%;
+    }
+    .attribution-note {
+      font-size: 0.7rem;
+      text-align: center;
+      margin-top: 20px;
+      color: #9a846b;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <div class="logo">
+        <h2>Coffee Shop Cafe</h2>
+        <p>Southern comfort · Homemade goodness</p>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HOME SECTION (ID home) -->
+  <main>
+    <section id="home">
+      <div class="hero" data-aos="fade-up">
+        <div class="container">
+          <h1 class="hero-title">Welcome to Coffee Shop Cafe</h1>
+          <p class="hero-sub">Fresh homemade food & coffee served daily</p>
+          <a href="#contact" class="btn-cta">📍 Visit Us Today</a>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- short intro -->
+        <div data-aos="fade-up" style="text-align: center; max-width: 800px; margin: 20px auto 10px;">
+          <p style="font-size: 1.2rem; line-height: 1.5; color: #4a3727;">A warm and friendly place where you can enjoy fresh coffee, homemade meals, and a relaxing Southern atmosphere. Whether you come for breakfast or a hearty lunch, we welcome you like family.</p>
+        </div>
+
+        <!-- highlight features -->
+        <div class="features-grid" data-aos="fade-up" data-aos-delay="100">
+          <div class="feature-card"><div class="feature-icon">🥘</div><h3>Always Fresh Food</h3><p>Farm-quality ingredients, baked daily</p></div>
+          <div class="feature-card"><div class="feature-icon">🍗</div><h3>Homemade Southern Meals</h3><p>Recipes passed down with love</p></div>
+          <div class="feature-card"><div class="feature-icon">🍽️</div><h3>Daily Buffet Available</h3><p>Southern comfort, all-you-can-enjoy</p></div>
+        </div>
+
+        <!-- Popular dishes showcase (no full menu) -->
+        <div data-aos="fade-up">
+          <h2 class="section-title">Southern Favorites</h2>
+          <div class="dishes-showcase">
+            <div class="dish-item"><img src="https://images.pexels.com/photos/5857503/pexels-photo-5857503.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Cinnamon Rolls"><h4>Cinnamon Rolls</h4><p>Gooey, cream cheese glaze</p></div>
+            <div class="dish-item"><img src="https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Chicken Strips"><h4>Chicken Strips</h4><p>Golden, crispy & juicy</p></div>
+            <div class="dish-item"><img src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Meatloaf"><h4>Meatloaf</h4><p>Classic brown gravy & mash</p></div>
+            <div class="dish-item"><img src="https://images.pexels.com/photos/9091703/pexels-photo-9091703.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Western Omelet"><h4>Western Omelet</h4><p>Loaded with ham, peppers, cheese</p></div>
+          </div>
+        </div>
+
+        <!-- Photo Gallery -->
+        <div data-aos="fade-up">
+          <h2 class="section-title">Cozy Moments</h2>
+          <div class="gallery-grid">
+            <div class="gallery-img"><img src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cafe interior wooden table"></div>
+            <div class="gallery-img"><img src="https://images.pexels.com/photos/3020919/pexels-photo-3020919.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Pouring coffee"></div>
+            <div class="gallery-img"><img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Homemade pie"></div>
+            <div class="gallery-img"><img src="https://images.pexels.com/photos/1211887/pexels-photo-1211887.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Buffet spread"></div>
+          </div>
+        </div>
+
+        <!-- Customer Reviews Section with ~4.5 stars highlight -->
+        <div data-aos="fade-up">
+          <h2 class="section-title">What Our Guests Say</h2>
+          <div class="rating-summary">
+            <div class="rating-badge">⭐ 4.6 ★★★★★ <span style="font-size:0.9rem;">(483 reviews)</span></div>
+          </div>
+          <div class="reviews-container">
+            <div class="review-card"><div class="stars">★★★★★</div><div class="review-text">“Best homemade biscuits and gravy in Texas! The buffet is fresh and the staff treats you like family. Our Sunday morning tradition.”</div><div class="review-author">— Hannah R.</div></div>
+            <div class="review-card"><div class="stars">★★★★½</div><div class="review-text">“Meatloaf tastes just like my grandma’s. Cozy atmosphere and the cinnamon rolls are incredible. Drive-thru is super convenient.”</div><div class="review-author">— Mark T.</div></div>
+            <div class="review-card"><div class="stars">★★★★★</div><div class="review-text">“Warm, welcoming and delicious. The western omelet is huge, coffee is fresh all day. No wonder locals love this place.”</div><div class="review-author">— Susan W.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT PAGE (section) -->
+    <section id="about" style="background: #FCF6EF;">
+      <div class="container">
+        <div data-aos="fade-up">
+          <h2 class="section-title">Our Story</h2>
+          <div class="about-story">
+            <p style="font-size: 1.1rem; line-height: 1.5; margin-bottom: 20px;">Coffee Shop Cafe started as a dream to bring authentic Southern hospitality to McGregor. We’re a family-style coffee shop known for homemade recipes, from slow-cooked meats to fresh-from-the-oven pastries. Every morning at 6:00 AM, our kitchen fills with the aroma of coffee and Southern comfort.</p>
+            <p style="font-size: 1.1rem; line-height: 1.5;">Using fresh ingredients and time-honored techniques, we craft meals that remind you of Sunday dinners. Our goal is to be the heart of the community — a cozy spot where neighbors become friends and every plate is made with love.</p>
+          </div>
+          <div data-aos="fade-up">
+            <h3 style="font-size: 1.8rem; text-align: center; margin: 30px 0 20px;">Why people love us</h3>
+            <div class="why-list">
+              <div class="why-item">🤝 Great service & southern smiles</div>
+              <div class="why-item">🍲 Delicious homemade food</div>
+              <div class="why-item">🪑 Comfortable & warm atmosphere</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT & LOCATION PAGE (section) -->
+    <section id="contact">
+      <div class="container">
+        <div data-aos="fade-up">
+          <h2 class="section-title">Visit Us</h2>
+          <div class="contact-grid">
+            <div class="contact-details">
+              <div class="info-row"><span class="info-icon">📍</span> <strong>1005 W McGregor Dr, McGregor, TX 76657, United States</strong></div>
+              <div class="info-row"><span class="info-icon">⏰</span> Opening Hours: <strong>Opens at 6:00 AM</strong> (Daily)</div>
+              <div class="info-row"><span class="info-icon">💰</span> Price range: <strong>$10–20 per person</strong></div>
+              <div class="info-row"><span class="info-icon">🍽️</span> Dine-in available</div>
+              <div class="info-row"><span class="info-icon">🚗</span> Drive-thru available</div>
+              <div class="info-row"><span class="info-icon">📦</span> No delivery — come enjoy the experience!</div>
+              <div class="hours-badge">Fresh coffee & homemade breakfast from 6 AM</div>
+              <div class="price-badge" style="margin-left: 0; margin-top: 15px;">Walk-ins welcome · Southern buffet daily</div>
+            </div>
+            <div class="map-container">
+              <!-- Embedded Google Map via iframe using the provided link coordinates -->
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3396.374606962877!2d-97.180204!3d31.460331!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644e0e4f6e6f9c7%3A0x1d5a6b7f8e2c3d4a!2s1005%20W%20McGregor%20Dr%2C%20McGregor%2C%20TX%2076657!5e0!3m2!1sen!2sus!4v1712690000000!5m2!1sen!2sus" width="100%" height="100%" style="border:0; min-height: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+          <!-- Additional assurance (no call button but plain address) -->
+          <div style="text-align: center; margin: 40px 0 20px;">
+            <a href="#home" class="btn-cta" style="background: #8B5A2B;">Back to Top</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Coffee Shop Cafe — 1005 W McGregor Dr, McGregor, TX — Warm Southern hospitality, homemade daily.</p>
+    <p style="margin-top: 8px;">Walk-ins only · Fresh buffet · Drive-thru available</p>
+  </footer>
+
+  <!-- AOS + smooth animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      offset: 80,
+      once: true
+    });
+    // Add manual smooth scroll for anchor links (no booking)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === "#" || targetId === "") return;
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+  <!-- Note: images are realistic stock photos from Pexels, representing food/cafe atmosphere -->
+</body>
+</html>
